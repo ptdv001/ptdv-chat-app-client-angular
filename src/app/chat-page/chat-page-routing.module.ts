@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page.component';
+import { ChatPageComponent } from './chat-page.component';
 
 const routes: Routes = [
     {
-        // path: 'home',
+        // Path set in main router (lazy loads it)
         path: '',
-        component: HomePageComponent
-        // pathMatch: 'full'
+        component: ChatPageComponent,
+
+        //pathMatch: 'full'
+        //canLoad: [AuthGuard]
     }
 ];
 
@@ -17,4 +19,4 @@ const routes: Routes = [
     ],
     exports: []
 })
-export class HomePageRoutingModule { }
+export class ChatPageRoutingModule { }
