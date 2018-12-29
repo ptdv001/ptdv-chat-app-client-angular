@@ -13,13 +13,13 @@ export function windowFactory() {
     return window;
 }
 
-export class CustomLoader implements TranslateLoader {
-    private readonly LOCALIZATION_API_URL: string = '/api/localized-strings';
+export class LocalizedStringsLoader implements TranslateLoader {
+    private readonly API_URL: string = '/api/localized-strings';
 
     constructor(public http: HttpClient) { }
 
     getTranslation(): Observable<any> {
-        return this.http.get(this.LOCALIZATION_API_URL);
+        return this.http.get(this.API_URL);
     }
 }
 
@@ -33,10 +33,12 @@ export class CustomLoader implements TranslateLoader {
         HttpClientModule,
 
         SharedModule.forRoot(),
+
+        // TranslateModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useClass: CustomLoader,
+                useClass: LocalizedStringsLoader,
                 deps: [HttpClient]
             }
         })

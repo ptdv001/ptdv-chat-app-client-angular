@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatsPageComponent } from './chats-page.component';
+import { LocalizeRouterModule } from 'localize-router';
 
 const routes: Routes = [
     {
-        // Path set in main router (lazy loads it)
+        // Parent Path set in main router (lazy loads it), can have sub routes here
+        // e.g. path: ':slug',
         path: '',
         component: ChatsPageComponent
     }
@@ -13,7 +15,8 @@ const routes: Routes = [
 @NgModule({
     imports: [
         // Note `forChild` for sub modules vs. `forRoot` for app module
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        LocalizeRouterModule.forChild(routes)
     ],
     exports: []
 })

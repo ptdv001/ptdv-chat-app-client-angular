@@ -29,26 +29,31 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
+        LocalizeRouterModule.forRoot(routes, {
+            parser: {
+                provide: LocalizeParser,
+                useFactory: httpLoaderFactory,
+                deps: [
+                    TranslateService,
+                    Location,
+                    LocalizeRouterSettings,
+                    HttpClient
+                ]
+            },
+            useCachedLang: false,
+            alwaysSetPrefix: true
+        }),
         RouterModule.forRoot(
             routes,
             {
                 // enableTracing: true, // For debugging
                 // onSameUrlNavigation: 'reload'
             }
-        ),
-        LocalizeRouterModule.forRoot(routes, {
-            parser: {
-                provide: LocalizeParser,
-                useFactory: httpLoaderFactory,
-                deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
-            },
-            useCachedLang: false,
-            alwaysSetPrefix: true
-        })
+        )
     ],
     exports: [
-        RouterModule,
-        LocalizeRouterModule
+        LocalizeRouterModule,
+        RouterModule
     ]
 })
 export class AppRoutingModule { }
