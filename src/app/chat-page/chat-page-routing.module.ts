@@ -16,6 +16,7 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
+        // Below required in each child module to enable localized routing
         TranslateModule,
         LocalizeRouterModule.forChild(routes),
         RouterModule.forChild(routes)
