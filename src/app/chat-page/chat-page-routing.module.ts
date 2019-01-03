@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 const routes: Routes = [
     {
         // Path set in main router (lazy loads it)
-        path: '',
+        path: ':id',
         component: ChatPageComponent,
         pathMatch: 'full' // do I need this?
         //canLoad: [AuthGuard]

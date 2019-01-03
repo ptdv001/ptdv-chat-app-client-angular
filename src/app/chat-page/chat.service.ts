@@ -3,18 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Chat } from 'chat-api';
 
 @Injectable()
-export class ChatsService {
+export class ChatService {
     private chatsPageUrl = 'api/chats';
 
     constructor(private http: HttpClient) { }
 
-    getChats() {
-        let url: string = `${this.chatsPageUrl}`;
+    getChat(id: number) {
+        let url: string = `${this.chatsPageUrl}/${id}`;
 
         // TODO replace any with Chats once update API
         return this.http.get(url)
             .toPromise()
-            .then((response: Array<Chat>) => response)
+            .then((response: Chat) => response)
             .catch(error => {
                 // TODO
                 //return this.handleError(error);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatsService } from './chats.service';
-import { Chats } from 'chat-api';
+import { Chat } from 'chat-api';
 
 @Component({
     selector: 'pca-chats-page',
@@ -8,14 +8,17 @@ import { Chats } from 'chat-api';
     styleUrls: ['./chats-page.component.scss']
 })
 export class ChatsPageComponent implements OnInit {
+
+    public chats: Array<Chat>;
+
     constructor(private chatsService: ChatsService) { }
 
     ngOnInit() {
         console.log('chats-page component onInit');
 
         this.chatsService.getChats()
-            .then(chats => {
-                console.log(chats);
+            .then((chats: Array<Chat>) => {
+                this.chats = chats;
             });
     }
 }

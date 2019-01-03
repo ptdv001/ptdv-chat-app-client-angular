@@ -13,7 +13,8 @@ declare module 'chat-api' {
         messages: Array<Message>
     }
 
-    interface Chats {
-        // TODO possibly change API
-    }
+    // TODO possibly change API
+
+    // Use as a `Array<Chat>`
+    // interface Chats {}
 }

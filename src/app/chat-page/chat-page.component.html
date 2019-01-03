@@ -1,5 +1,13 @@
-<section class="chat-page">
-    <h2>Chat Page</h2>
+<section *ngIf="chat" class="chat-page">
+    <h2>{{chat.name}}</h2>
+    <p>Created {{chat.timestamp}}</p>
 
-    <p>TODO</p>
+    <ul *ngIf="chat.messages.length > 0">
+        <li *ngFor="let message of chat.messages">
+            {{message.id}}
+            {{message.username}}:
+            {{message.message}}
+            {{message.timestamp}}
+        </li>
+    </ul>
 </section>
