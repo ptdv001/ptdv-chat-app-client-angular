@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Observable } from 'rxjs';
 
+import { AppNavigationModule } from './app-navigation/app-navigation.module'
+
 declare const window: Window;
 export function windowFactory() {
     return window;
@@ -44,7 +46,9 @@ export class LocalizedStringsLoader implements TranslateLoader {
                 useClass: LocalizedStringsLoader,
                 deps: [HttpClient]
             }
-        })
+        }),
+
+        AppNavigationModule
     ],
     providers: [
         { provide: Window, useFactory: windowFactory },

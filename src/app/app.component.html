@@ -1,9 +1,6 @@
 <section>
     <h1> PT (PTDV-CHAT) APP</h1>
-    <a routerLink="">home</a><br>
-    <a [routerLink]="['/chats' | localize]">chats</a><br>
-    <a [routerLink]="['/chat' | localize]">chat</a>
-
+    <chat-header></chat-header>
 
     <router-outlet></router-outlet>
 </section>

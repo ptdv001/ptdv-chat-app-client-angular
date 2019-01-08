@@ -1,0 +1,2 @@
+<a *ngIf="param" [routerLink]="[path | localize, param]">{{linkText}}</a>
+<a *ngIf="!param" [routerLink]="[path | localize]">{{linkText}}</a>
