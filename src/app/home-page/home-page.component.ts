@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from '../shared/events/events.service';
 
 @Component({
     selector: 'pca-home-page',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-    constructor() { }
+    constructor(private route: ActivatedRoute,
+        private eventService: EventService) {
+    }
 
     ngOnInit() {
-        console.log('home-page component onInit');
+        // Done this way to be consistent and for future case(s) with more route info.
+        this.route.paramMap
+            .subscribe(params => {
+                this.eventService.publishPageView('HomePage View');
+            });
     }
 }

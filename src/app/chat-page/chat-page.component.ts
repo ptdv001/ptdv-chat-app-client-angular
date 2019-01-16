@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
+import { EventService } from '../shared/events/events.service';
 import { Chat } from 'chat-api';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,20 +15,21 @@ export class ChatPageComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private chatService: ChatService) {
+        private chatService: ChatService,
+        private eventService: EventService) {
     }
 
     ngOnInit() {
-        console.log('chat-page component onInit');
+        this.route.paramMap
+            .subscribe(params => {
+                let chatId = parseInt(params.get('id'));
 
-        this.route.paramMap.subscribe(params => {
-            let chatId = parseInt(params.get('id'));
-            console.log('chatId', chatId);
-            this.chatService.getChat(chatId)
-                .then((chat: Chat) => {
-                    console.log('chat', chat);
-                    this.chat = chat;
-                });
-        });
+                this.eventService.publishPageView('ChatPage View for Chat: ' + chatId);
+
+                this.chatService.getChat(chatId)
+                    .then((chat: Chat) => {
+                        this.chat = chat;
+                    });
+            });
     }
 }

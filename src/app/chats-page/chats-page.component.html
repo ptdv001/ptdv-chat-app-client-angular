@@ -3,7 +3,8 @@
 
     <ul *ngIf="chats && chats.length > 0">
         <li *ngFor="let chat of chats">
-            <router-link path="/chat" param="{{chat.id}}" linkText="{{chat.name}}"></router-link> {{chat.timestamp}}
+            <router-link path="/chat" param="{{chat.id}}" linkText="{{chat.name}}" (click)="handleLinkClick(chat)"></router-link>
+            {{chat.timestamp}}
         </li>
     </ul>
 </section>
