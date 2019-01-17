@@ -29,8 +29,5 @@ export class ChatsPageComponent implements OnInit {
             });
     }
 
-    // BUG: seems to only work once, after that the event is not fired agaion in the app lifecycle?
-    handleLinkClick(clickData): void {
-        this.eventService.publishLinkClick(clickData);
-    }
+
 }

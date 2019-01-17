@@ -51,6 +51,7 @@ export class LocalizedStringsLoader implements TranslateLoader {
         AppNavigationModule
     ],
     providers: [
+        // Can now @Inject windows into any component
         { provide: Window, useFactory: windowFactory },
         // { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true},
     ],

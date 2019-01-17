@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
         // Done this way to be consistent and for future case(s) with more route info.
         this.route.paramMap
             .subscribe(params => {
-                this.eventService.publishPageView('HomePage View');
+                this.eventService.publishPageView('HomePage');
             });
     }
 }
